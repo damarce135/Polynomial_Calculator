@@ -31,7 +31,8 @@ public class MainScreen {
     private JButton DclearButton;
     private JTextField screenField;
     private JPanel mainPanel;
-    private int nine;
+    private boolean flag=true;
+    private boolean multflag;
     String[] tokens;
     String screen=screenField.getText();
 
@@ -150,15 +151,30 @@ public class MainScreen {
         multiplicationButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
                 screen=screenField.getText();
-                tokens = screen.split("\n");
-                System.out.println(tokens[0]);
+                if(flag){
+                    tokens = screen.split("\n");
+                    Multiplication oper= new Multiplication();
+                    oper.Operator1(tokens);
+                }
                 screenField.setText("");
+
             }
         });
         equalButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
+                screen=screenField.getText();
+                multflag=true;
+                Multiplication oper= new Multiplication();
+                if(multflag){
+                    tokens = screen.split("\n");
+                    oper.Operator2(tokens);
+                    screenField.setText("The result is: ");
+
+                }
                 screenField.setText("The result is: ");
-            }
+                oper.result();
+
+                }
         });
     }
 
