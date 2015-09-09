@@ -35,8 +35,8 @@ public class MainScreen {
     private JTextField screenField;
     private JPanel mainPanel;
     private boolean flag=true;
-    private boolean multflag;
-    private boolean addflag;
+    private boolean multflag= false;
+    private boolean addflag=false;
     public String[] entry1;
     public String[] entry2;
     String tokens;
@@ -148,6 +148,7 @@ public class MainScreen {
         plusButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
                 screen=screenField.getText();
+                addflag=true;
                 if(flag){
                     tokens = screen;
                     if(tokens.matches(REGEX_NUMBER)){
@@ -174,6 +175,7 @@ public class MainScreen {
         multiplicationButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
                 screen=screenField.getText();
+                multflag=true;
                 if(flag){
                     tokens = screen;
                     if(tokens.matches(REGEX_NUMBER)){
@@ -192,26 +194,24 @@ public class MainScreen {
         equalButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
                 screen = screenField.getText();
-                multflag = true;
                 Multiplication oper = new Multiplication();
+                Addition add = new Addition();
                 if (multflag) {
                     tokens = screen;
                     oper.Operator2(tokens);
                     screenField.setText("The result is: ");
-
                 }
-                screenField.setText("The result is: ");
-                oper.result();
 
-                addflag = true;
-                Addition add = new Addition();
-                if(addflag) {
+                if (addflag){
                     tokens=screen;
                     entry2 = add.Operator2(tokens);
                     String answer = add.result(entry1,entry2);
                     screenField.setText("The result is: "+answer);
 
                 }
+                screenField.setText("The result is: ");
+                oper.result();
+
 
             }
         });
