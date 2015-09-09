@@ -1,5 +1,7 @@
 package ac.cr.tec;
 
+import org.omg.PortableServer.POAManagerPackage.AdapterInactive;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -34,7 +36,10 @@ public class MainScreen {
     private JPanel mainPanel;
     private boolean flag=true;
     private boolean multflag;
-    String[] tokens;
+    private boolean addflag;
+    public String[] entry1;
+    public String[] entry2;
+    String tokens;
     String screen=screenField.getText();
 
 
@@ -143,25 +148,35 @@ public class MainScreen {
         plusButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
                 screen=screenField.getText();
-                tokens = screen.split(("|"));
-                System.out.println(tokens[0]);
+                if(flag){
+                    tokens = screen;
+                    if(tokens.matches(REGEX_NUMBER)){
+                        Addition oper= new Addition();
+                        entry1 = oper.Operator1(tokens);
+                    }
+                    else{
+                        System.out.println("Error, input not valid");
+                    }
+
+                }
                 screenField.setText("");
             }
         });
         minusButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
                 screen=screenField.getText();
-                tokens = screen.split("\n");
+                //tokens = screen.split("\n");
                 System.out.println(screen);
                 screenField.setText("");
             }
         });
+
         multiplicationButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
                 screen=screenField.getText();
                 if(flag){
-                    tokens = screen.split("\n");
-                    if(tokens.toString().matches(REGEX_NUMBER)){
+                    tokens = screen;
+                    if(tokens.matches(REGEX_NUMBER)){
                         Multiplication oper= new Multiplication();
                         oper.Operator1(tokens);
                     }
@@ -176,11 +191,11 @@ public class MainScreen {
         });
         equalButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
-                screen=screenField.getText();
-                multflag=true;
-                Multiplication oper= new Multiplication();
-                if(multflag){
-                    tokens = screen.split("\n");
+                screen = screenField.getText();
+                multflag = true;
+                Multiplication oper = new Multiplication();
+                if (multflag) {
+                    tokens = screen;
                     oper.Operator2(tokens);
                     screenField.setText("The result is: ");
 
@@ -188,7 +203,17 @@ public class MainScreen {
                 screenField.setText("The result is: ");
                 oper.result();
 
+                addflag = true;
+                Addition add = new Addition();
+                if(addflag) {
+                    tokens=screen;
+                    entry2 = add.Operator2(tokens);
+                    String answer = add.result(entry1,entry2);
+                    screenField.setText("The result is: "+answer);
+
                 }
+
+            }
         });
 
     }
