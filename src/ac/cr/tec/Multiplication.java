@@ -22,7 +22,7 @@ public class Multiplication {
     public void Operator2(String[] op2) {
         this.op2=op2;
         System.out.println(op2[0]);
-        System.out.println(op2[0]);
+
 
     }
     public void result(){

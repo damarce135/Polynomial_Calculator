@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
  * Created by fabian on 06/09/15.
  */
 public class MainScreen {
+    public static final String REGEX_NUMBER = "(-\\d|\\d)+\\ (-\\d|\\d)+\\ (-\\d|\\d)+(\\|(-\\d|\\d)+\\ (-\\d|\\d)+\\ (-\\d|\\d)+)*";
     private JButton a0Button;
     private JButton a1Button;
     private JButton a4Button;
@@ -121,6 +122,13 @@ public class MainScreen {
                 screenField.setText(state + negativeButton.getText());
             }
         });
+        blankButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent actionEvent) {
+                String state = screenField.getText();
+                screenField.setText(state + "\n");
+
+            }
+        });
         DclearButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
                 screenField.setText("");
@@ -153,8 +161,14 @@ public class MainScreen {
                 screen=screenField.getText();
                 if(flag){
                     tokens = screen.split("\n");
-                    Multiplication oper= new Multiplication();
-                    oper.Operator1(tokens);
+                    if(tokens.toString().matches(REGEX_NUMBER)){
+                        Multiplication oper= new Multiplication();
+                        oper.Operator1(tokens);
+                    }
+                    else{
+                        System.out.println("Error, input not valid");
+                    }
+
                 }
                 screenField.setText("");
 
@@ -176,6 +190,7 @@ public class MainScreen {
 
                 }
         });
+
     }
 
 }
