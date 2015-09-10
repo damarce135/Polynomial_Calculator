@@ -47,7 +47,6 @@ public class Addition {
     public String result(String[] val1,String[] val2){
         String res= "";
         String[] entry1 = splitt(val1, 0);
-        //System.out.println("Este es el primer elemento:" +entry1[0]);
         String[] entry2 = splitt(val1, 1);
         String[] entry3 = splitt(val1, 2);
         String[] entry4 = splitt(val2, 0);

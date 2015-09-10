@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
  * Created by fabian on 06/09/15.
  */
 public class MainScreen {
-    public static final String REGEX_NUMBER = "(-\\d|\\d)+\\ (-\\d|\\d)+\\ (-\\d|\\d)+(\\|(-\\d|\\d)+\\ (-\\d|\\d)+\\ (-\\d|\\d)+)*";
+    public static final String REGEX_NUMBER = "(-\\d+|\\d+)\\ (-\\d+|\\d+)\\ (-\\d+|\\d+)(\\ \\|\\ (-\\d+|\\d+)\\ (-\\d+|\\d+)\\ (-\\d+|\\d+))*";
     private JButton a0Button;
     private JButton a1Button;
     private JButton a4Button;

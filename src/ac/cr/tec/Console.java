@@ -18,10 +18,9 @@ public class Console {
 
 
     public static void  startConsole(String[] args) {
-        System.out.println("Enter your instruction: ");
-        Scanner scanner = new Scanner(System.in);
-        input = scanner.nextLine();
-        input=input.replace(String.valueOf(input.charAt(0)), "");
+        System.out.println("Entre");
+        String input = args[0]+" "+args[1]+" "+args[2];
+
 
         instruction=input.split(" [+*e-] ");
         if(instruction!= null){
