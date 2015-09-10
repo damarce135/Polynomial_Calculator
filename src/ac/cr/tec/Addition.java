@@ -53,6 +53,7 @@ public class Addition {
 
         if (entry1[1] == entry4[1] && entry1[2] == entry4[2]) {
                 res = res + "|" + (entry1[0] + entry4[0]) + " " + entry1[1] + " " + entry1[2];
+
             }
         if (entry1[1] == entry5[1] && entry1[2] == entry5[2]) {
             res = res + "|" + (entry1[0] + entry5[0]) + " " + entry1[1] + " " + entry1[2];
