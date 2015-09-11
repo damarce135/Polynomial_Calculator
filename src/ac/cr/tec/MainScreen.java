@@ -180,7 +180,7 @@ public class MainScreen {
                     tokens = screen;
                     if(tokens.matches(REGEX_NUMBER)){
                         Multiplication oper= new Multiplication();
-                        oper.Operator1(tokens);
+                        entry1 = oper.Operator1(tokens);
                     }
                     else{
                         System.out.println("Error, input not valid");
@@ -198,19 +198,21 @@ public class MainScreen {
                 Addition add = new Addition();
                 if (multflag) {
                     tokens = screen;
-                    oper.Operator2(tokens);
-                    screenField.setText("The result is: ");
+                    entry2 = oper.Operator2(tokens);
+                    String ans = oper.resultMult(entry1,entry2);
+                    screenField.setText("The result is: " + ans);
+
                 }
 
                 if (addflag){
                     tokens=screen;
                     entry2 = add.Operator2(tokens);
-                    String answer = add.result(entry1,entry2);
+                    String answer = add.resultAdd(entry1,entry2);
                     screenField.setText("The result is: "+answer);
 
                 }
-                screenField.setText("The result is: ");
-                oper.result();
+                //screenField.setText("The result is: ");
+                //oper.result();
 
 
             }
