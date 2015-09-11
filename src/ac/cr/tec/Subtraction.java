@@ -43,7 +43,7 @@ public class Subtraction {
         return val;
     }
 
-    public String result(String[] val1,String[] val2){
+    public String resultSub(String[] val1,String[] val2){
         String res= "";
         String[] entry1 = splitt(val1, 0);
         //System.out.println("Este es el primer elemento:" +entry1[0]);

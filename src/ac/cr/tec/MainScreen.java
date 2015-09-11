@@ -199,7 +199,7 @@ public class MainScreen {
                 if (multflag) {
                     tokens = screen;
                     entry2 = oper.Operator2(tokens);
-                    String ans = oper.resultMult(entry1,entry2);
+                    String ans = (oper.resultMult(entry1, entry2)).replace(" | 0 0 0"," ");
                     screenField.setText("The result is: " + ans);
 
                 }

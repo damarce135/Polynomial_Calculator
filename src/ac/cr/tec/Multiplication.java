@@ -71,7 +71,7 @@ public class Multiplication {
             first[0] = multi(entry1,entry3);
             first[1] = multi(entry1,entry4);
             first[2] = multi(entry1,entry5);
-            String[] second = {"","","","000"};
+            String[] second = {"","","","0 0 0"};
             second[0] = multi(entry2,entry3);
             second[1] = multi(entry2,entry4);
             second[2] = multi(entry2,entry5);
