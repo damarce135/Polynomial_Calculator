@@ -32,7 +32,7 @@ public class MainScreen {
     private JButton DclearButton;
     private JTextField screenField;
     private JPanel mainPanel;
-    private boolean flag=true;
+    private boolean flag=false;
     private boolean multflag= false;
     private boolean addflag=false;
     private boolean subflag=false;
@@ -148,6 +148,7 @@ public class MainScreen {
 
         clearcancelButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
+                flag = false;
                 addflag = false;
                 subflag = false;
                 multflag = false;
@@ -158,6 +159,7 @@ public class MainScreen {
 
         plusButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
+                flag=true;
                 screen=screenField.getText();
                 addflag=true;
                 if(flag){
@@ -178,6 +180,7 @@ public class MainScreen {
         });
         minusButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
+                flag=true;
                 screen=screenField.getText();
                 subflag=true;
                 if(flag){
@@ -199,6 +202,7 @@ public class MainScreen {
 
         multiplicationButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
+                flag=true;
                 screen=screenField.getText();
                 multflag=true;
                 if(flag){
@@ -220,6 +224,7 @@ public class MainScreen {
 
         evaluatesButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
+                flag=true;
                 screen = screenField.getText();
                 evalflag = true;
                 if(flag){
@@ -250,36 +255,59 @@ public class MainScreen {
                 Evaluation eval = new Evaluation();
                 if (multflag) {
                     tokens = screen;
-                    entry2 = oper.Operator2(tokens);
-                    String ans = (oper.resultMult(entry1, entry2)).replace(" | 0 0 0", " ");
-                    screenField.setText("The result is: " + ans);
-
+                    if(tokens.matches(REGEX_NUMBER)){
+                        entry2 = oper.Operator2(tokens);
+                        String ans = (oper.resultMult(entry1, entry2)).replace(" | 0 0 0", " ");
+                        screenField.setText(ans);
+                    }
+                    else{
+                        screenField.setText("Error, input not valid");
+                        System.out.println("Error, input not valid");
+                    }
                 }
+
                 if (addflag){
                     tokens=screen;
-                    entry2 = add.Operator2(tokens);
-                    String answer = add.resultAdd(entry1, entry2);
-                    screenField.setText("The result is: "+answer);
-
+                    if(tokens.matches(REGEX_NUMBER)){
+                        entry2 = add.Operator2(tokens);
+                        String answer = add.resultAdd(entry1, entry2);
+                        screenField.setText(answer);
+                    }
+                    else{
+                        screenField.setText("Error, input not valid");
+                        System.out.println("Error, input not valid");
+                    }
                 }
+
                 if (subflag){
                     tokens=screen;
-                    entry2 = sub.Operator2(tokens);
-                    String answer = sub.resultSub(entry1, entry2);
-                    screenField.setText("The result is: "+answer);
+                    if(tokens.matches(REGEX_NUMBER)){
+                        entry2 = sub.Operator2(tokens);
+                        String answer = sub.resultSub(entry1, entry2);
+                        screenField.setText(answer);
+                    }
+                    else{
+                        screenField.setText("Error, input not valid");
+                        System.out.println("Error, input not valid");
+                    }
 
                 }
                 if (evalflag){
                     tokens=screen;
-                    entry2 = eval.Operator2(tokens);
-                    String answer = eval.resultEval(entry1, entry2);
-                    screenField.setText("The result is: "+answer);
-
+                    //String match= " (-\\d+|\\d+)";
+                    //if(tokens.matches(match)){
+                        entry2 = eval.Operator2(tokens);
+                        String answer = eval.resultEval(entry1, entry2);
+                        screenField.setText(answer);
+                    //}
+                   // else{
+                        screenField.setText("Error, input not valid");
+                        System.out.println("Error, input not valid");
+                    //}
                 }
-                else{
-                    screenField.setText("Error, operation not selected");
+                if (flag== false){
+                    screenField.setText("Error: operation not selected");
                 }
-
 
             }
         });
