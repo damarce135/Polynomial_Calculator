@@ -165,6 +165,7 @@ public class MainScreen {
                     if(tokens.matches(REGEX_NUMBER)){
                         Addition oper= new Addition();
                         entry1 = oper.Operator1(tokens);
+                        screenField.setText("");
                     }
                     else{
                         screenField.setText("Error, input not valid");
@@ -184,6 +185,7 @@ public class MainScreen {
                     if(tokens.matches(REGEX_NUMBER)){
                         Subtraction oper= new Subtraction();
                         entry1 = oper.Operator1(tokens);
+                        screenField.setText("");
                     }
                     else{
                         screenField.setText("Error, input not valid");
@@ -204,6 +206,7 @@ public class MainScreen {
                     if(tokens.matches(REGEX_NUMBER)){
                         Multiplication oper= new Multiplication();
                         entry1 = oper.Operator1(tokens);
+                        screenField.setText("");
                     }
                     else{
                         screenField.setText("Error, input not valid");
@@ -224,6 +227,7 @@ public class MainScreen {
                     if(tokens.matches(REGEX_NUMBER)){
                         Evaluation oper= new Evaluation();
                         entry1 = oper.Operator1(tokens);
+                        screenField.setText("");
                     }
                     else{
                         screenField.setText("Error, input not valid");

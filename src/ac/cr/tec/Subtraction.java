@@ -15,7 +15,7 @@ public class Subtraction {
     public String[] Operator1(String op1) {
         //System.out.println(op1[0]);
         int j = 0;
-        String [] val = op1.split("\\|");
+        String [] val = op1.split(" \\| ");
         while(j<val.length){
             System.out.println(val[j]);
             j++;
@@ -25,7 +25,7 @@ public class Subtraction {
     public String[] Operator2(String op2) {
         //System.out.println(op2[0]);
         int j = 0;
-        String [] val = op2.split("\\|");
+        String [] val = op2.split(" \\| ");
         while(j<val.length){
             System.out.println(val[j]);
             j++;
