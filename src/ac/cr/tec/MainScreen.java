@@ -218,6 +218,11 @@ public class MainScreen {
             }
         });
 
+        evaluatesButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent actionEvent) {
+
+            }
+        });
     }
 
 }
