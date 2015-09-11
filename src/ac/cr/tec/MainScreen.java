@@ -35,10 +35,10 @@ public class MainScreen {
     private boolean flag=true;
     private boolean multflag= false;
     private boolean addflag=false;
-    private boolean subflag=true;
-    private boolean evalflag=true;
-    private boolean Dcancelflag=true;
-    private boolean Cclearflag=true;
+    private boolean subflag=false;
+    private boolean evalflag=false;
+    private boolean Dcancelflag=false;
+    private boolean Cclearflag=false;
 
 
     public String[] entry1;
@@ -220,8 +220,8 @@ public class MainScreen {
 
         evaluatesButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
-                screen=screenField.getText();
-                evalflag=true;
+                screen = screenField.getText();
+                evalflag = true;
                 if(flag){
                     tokens = screen;
                     if(tokens.matches(REGEX_NUMBER)){
@@ -239,6 +239,8 @@ public class MainScreen {
             }
         });
 
+
+
         equalButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
                 screen = screenField.getText();
@@ -249,7 +251,7 @@ public class MainScreen {
                 if (multflag) {
                     tokens = screen;
                     entry2 = oper.Operator2(tokens);
-                    String ans = (oper.resultMult(entry1, entry2)).replace(" | 0 0 0"," ");
+                    String ans = (oper.resultMult(entry1, entry2)).replace(" | 0 0 0", " ");
                     screenField.setText("The result is: " + ans);
 
                 }
@@ -274,9 +276,14 @@ public class MainScreen {
                     screenField.setText("The result is: "+answer);
 
                 }
+                else{
+                    screenField.setText("Error, operation not selected");
+                }
+
 
             }
         });
+
 
 
     }
