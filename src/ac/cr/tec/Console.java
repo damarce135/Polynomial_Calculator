@@ -9,16 +9,10 @@ public class Console {
     private static String oper1;
     private static String oper2;
     private static char sign;
-    public static boolean execute=false;
-
-
-
-
 
 
 
     public static void  startConsole(String[] args) {
-        System.out.println("Entre");
         String input = args[0]+" "+args[1]+" "+args[2];
 
 
@@ -30,13 +24,19 @@ public class Console {
 
             switch (input.charAt(oper1.length() + 1)) {
                 case '+':
-                    Addition oper= new Addition();
-                    oper.Operator1(oper1);
-                    oper.Operator1(oper2);
+                    Addition opera= new Addition();
+                    opera.Operator1(oper1);
+                    opera.Operator1(oper2);
                     break;
                 case '-':
+                    Subtraction opers= new Subtraction();
+                    opers.Operator1(oper1);
+                    opers.Operator1(oper2);
                     break;
                 case '*':
+                    Multiplication operm= new Multiplication();
+                    operm.Operator1(oper1);
+                    operm.Operator1(oper2);
                     break;
                 case 'e':
                     break;

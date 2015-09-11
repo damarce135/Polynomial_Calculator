@@ -7,9 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.regex.Pattern;
 
-/**
- * Created by fabian on 06/09/15.
- */
+
 public class MainScreen {
     public static final String REGEX_NUMBER = "(-\\d+|\\d+)\\ (-\\d+|\\d+)\\ (-\\d+|\\d+)(\\ \\|\\ (-\\d+|\\d+)\\ (-\\d+|\\d+)\\ (-\\d+|\\d+))*";
     private JButton a0Button;
@@ -37,6 +35,12 @@ public class MainScreen {
     private boolean flag=true;
     private boolean multflag= false;
     private boolean addflag=false;
+    private boolean subflag=true;
+    private boolean evalflag=true;
+    private boolean Dcancelflag=true;
+    private boolean Cclearflag=true;
+
+
     public String[] entry1;
     public String[] entry2;
     String tokens;
@@ -137,10 +141,17 @@ public class MainScreen {
         DclearButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
                 screenField.setText("");
+
+
             }
         });
+
         clearcancelButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
+                addflag = false;
+                subflag = false;
+                multflag = false;
+                evalflag = false;
                 screenField.setText("");
             }
         });
@@ -156,19 +167,31 @@ public class MainScreen {
                         entry1 = oper.Operator1(tokens);
                     }
                     else{
+                        screenField.setText("Error, input not valid");
                         System.out.println("Error, input not valid");
                     }
 
                 }
-                screenField.setText("");
+
             }
         });
         minusButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
                 screen=screenField.getText();
-                //tokens = screen.split("\n");
-                System.out.println(screen);
-                screenField.setText("");
+                subflag=true;
+                if(flag){
+                    tokens = screen;
+                    if(tokens.matches(REGEX_NUMBER)){
+                        Subtraction oper= new Subtraction();
+                        entry1 = oper.Operator1(tokens);
+                    }
+                    else{
+                        screenField.setText("Error, input not valid");
+                        System.out.println("Error, input not valid");
+                    }
+
+                }
+
             }
         });
 
@@ -183,19 +206,42 @@ public class MainScreen {
                         entry1 = oper.Operator1(tokens);
                     }
                     else{
+                        screenField.setText("Error, input not valid");
                         System.out.println("Error, input not valid");
                     }
 
                 }
-                screenField.setText("");
 
             }
         });
+
+        evaluatesButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent actionEvent) {
+                screen=screenField.getText();
+                evalflag=true;
+                if(flag){
+                    tokens = screen;
+                    if(tokens.matches(REGEX_NUMBER)){
+                        Evaluation oper= new Evaluation();
+                        entry1 = oper.Operator1(tokens);
+                    }
+                    else{
+                        screenField.setText("Error, input not valid");
+                        System.out.println("Error, input not valid");
+                    }
+
+                }
+
+            }
+        });
+
         equalButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
                 screen = screenField.getText();
                 Multiplication oper = new Multiplication();
                 Addition add = new Addition();
+                Subtraction sub = new Subtraction();
+                Evaluation eval = new Evaluation();
                 if (multflag) {
                     tokens = screen;
                     entry2 = oper.Operator2(tokens);
@@ -203,26 +249,32 @@ public class MainScreen {
                     screenField.setText("The result is: " + ans);
 
                 }
-
                 if (addflag){
                     tokens=screen;
                     entry2 = add.Operator2(tokens);
-                    String answer = add.resultAdd(entry1,entry2);
+                    String answer = add.resultAdd(entry1, entry2);
                     screenField.setText("The result is: "+answer);
 
                 }
-                //screenField.setText("The result is: ");
-                //oper.result();
+                if (subflag){
+                    tokens=screen;
+                    entry2 = sub.Operator2(tokens);
+                    String answer = sub.resultSub(entry1, entry2);
+                    screenField.setText("The result is: "+answer);
 
+                }
+                if (evalflag){
+                    tokens=screen;
+                    entry2 = eval.Operator2(tokens);
+                    String answer = eval.resultEval(entry1, entry2);
+                    screenField.setText("The result is: "+answer);
+
+                }
 
             }
         });
 
-        evaluatesButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent actionEvent) {
 
-            }
-        });
     }
 
 }
