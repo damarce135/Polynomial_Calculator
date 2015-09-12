@@ -294,19 +294,10 @@ public class MainScreen {
                 }
                 if (evalflag){
                     tokens=screen;
-                    //String match= " (-\\d+|\\d+)";
-                    //if(tokens.matches(match)){
-                        entry2 = eval.Operator2(tokens);
-                        String answer = eval.resultEval(entry1, entry2);
-                        screenField.setText(answer);
-                    //}
-                   // else{
-                        screenField.setText("Error, input not valid");
-                        System.out.println("Error, input not valid");
-                    //}
-                }
-                if (flag== false){
-                    screenField.setText("Error: operation not selected");
+                    entry2 = eval.Operator2(tokens);
+                    String answer = eval.resultEval(entry1, entry2);
+                    screenField.setText("The result is: "+answer);
+
                 }
 
             }
