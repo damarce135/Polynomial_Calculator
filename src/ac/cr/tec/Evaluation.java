@@ -10,6 +10,7 @@ public class Evaluation {
 
     }
 
+    //Obtains the first entry
     public String[] Operator1(String op1) {
         //System.out.println(op1[0]);
         int j = 0;
@@ -20,6 +21,8 @@ public class Evaluation {
         }
         return val;
     }
+
+    //Obtains the second entry
     public String[] Operator2(String op2) {
         //System.out.println(op2[0]);
         int j = 0;
@@ -31,6 +34,7 @@ public class Evaluation {
         return val;
     }
 
+    //Divides the Strings in an array
     public String[] splitt(String[] a, int i){
         int j = 0;
         String [] val = a[i].split(" ");
@@ -41,11 +45,13 @@ public class Evaluation {
         return val;
     }
 
+    //Converts String to int
     public int i(String a){
         int b=Integer.parseInt(a);
         return b;
     }
 
+    //Replaces the value of the x and y
     public String[] replace(String[] val, String a, String b){
         if (a != null){
             if (i(val[1]) == 0) {
@@ -85,6 +91,7 @@ public class Evaluation {
         return val;
     }
 
+    //Obtains the result of the evaluation
     public String resultEval(String[] val1, String[] val2){
         String res= "";
         String[] entry1 = splitt(val1, 0);
