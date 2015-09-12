@@ -167,7 +167,7 @@ public class Addition {
             }
 
         }
-        else  {
+        if (val1.length == 3 && val2.length == 3) {
             if (null != entry1) {
                 if ((entry1[1].equals(entry4[1])) && (entry1[2].equals(entry4[2]))) {
                     int value = Integer.parseInt(entry1[0]) + Integer.parseInt(entry4[0]);
@@ -254,6 +254,9 @@ public class Addition {
             }
 
             }
+        else{
+            System.out.println("Error al ingresar valores");
+        }
         System.out.println(res);
         return res;
     }
