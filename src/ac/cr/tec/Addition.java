@@ -12,6 +12,7 @@ public class Addition {
     public Addition() {
     }
 
+    //Obtains the first entry
     public String[] Operator1(String op1) {
         //System.out.println(op1[0]);
         int j = 0;
@@ -23,6 +24,7 @@ public class Addition {
         return val;
     }
 
+    //Obtains the second entry
     public String[] Operator2(String op2) {
         //System.out.println(op2[0]);
         int j = 0;
@@ -34,6 +36,7 @@ public class Addition {
         return val;
     }
 
+    //Divides the Strings in an array
     public String[] splitt(String[] a, int i) {
         int j = 0;
         String[] val = a[i].split(" ");
@@ -44,7 +47,7 @@ public class Addition {
         return val;
     }
 
-
+    //Obtains the result of the adding
     public String resultAdd(String[] val1, String[] val2) {
         String res = "";
         String[] entry1 = splitt(val1, 0);
